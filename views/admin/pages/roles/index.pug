@@ -1,0 +1,60 @@
+extends ../../layouts/default.pug
+
+block main
+    h1 #{titlePage}
+
+    .card.mb-3
+      .card-header Danh sách quyền
+        .card-body
+          .row 
+            .col-8
+            .col-4
+              if(role.permissions.includes("roles_create"))
+                a(
+                  href=`${prefixAdmin}/roles/create`
+                  class="btn btn-outline-success"
+                ) Thêm nhóm quyền
+
+          table(
+            class="table table-hover table-sm"
+            checkbox-multi
+          )
+            thead
+              tr
+                th STT
+                th Nhóm quyền
+                th Mô tả ngắn
+                th Hành động
+            
+            tbody
+              if(records.length > 0)
+                each item, index in records
+                  tr
+                    td #{index + 1}
+                    td #{item.title}
+                    td #{item.description}
+                    td
+                      a(
+                        href=`${prefixAdmin}/roles/detail/${item.id}`
+                        class="btn btn-secondary btn-sm"
+                        ) Chi tiết
+                      if(role.permissions.includes("roles_edit"))
+                        a(
+                          href=`${prefixAdmin}/roles/edit/${item.id}`
+                          class="btn btn-warning btn-sm"
+                          ) Sửa
+                      if(role.permissions.includes("roles_delete"))
+                        button(
+                          data-id=item.id
+                          class="btn btn-danger btn-sm ml-1"
+                          button-delete
+                        ) Xóa
+                form(action=""
+                  method="POST"
+                  id="form-delete-role"
+                  data-path=`${prefixAdmin}/roles/delete`
+                )
+              else 
+                tr 
+                  td(colspan="4" class='text-center') Chưa có nhóm quyền nào được tạo ra
+    script(src="/admin/js/roles.js") 

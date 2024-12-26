@@ -1,0 +1,32 @@
+.sider
+  .inner-menu
+    ul.nav.flex-column
+      li.nav-item
+        a.nav-link.active(href=`${prefixAdmin}/dashboard`)
+          i(class="fas fa-tachometer-alt mr-2") Tổng quan
+      if(role.permissions.includes("products-category_view"))
+        li.nav-item
+          a.nav-link(href=`${prefixAdmin}/products-category`)
+            i(class="fas fa-list mr-2") Danh mục sản phẩm
+      if(role.permissions.includes("products_view"))
+        li.nav-item
+          a.nav-link(href=`${prefixAdmin}/products`)
+            i(class="fas fa-boxes mr-2") Danh sách sản phẩm
+      li.nav-item
+        a.nav-link(href=`${prefixAdmin}/deleted-products`)
+          i(class="fas fa-trash mr-2") Xem sản phẩm bị xóa
+      if(role.permissions.includes("roles_view"))  
+        li.nav-item
+          a.nav-link(href=`${prefixAdmin}/roles`)
+            i(class="fas fa-users mr-2") Nhóm quyền
+      if(role.permissions.includes("roles_permissions"))
+        li.nav-item
+          a.nav-link(href=`${prefixAdmin}/roles/permissions`)
+            i(class="fas fa-key mr-2") Phân quyền
+      if(role.permissions.includes("accounts_view"))
+        li.nav-item
+          a.nav-link(href=`${prefixAdmin}/accounts`)
+            i(class="fas fa-user mr-2") Danh sách tài khoản
+      li.nav-item
+        a.nav-link(href=`${prefixAdmin}/settings/general`)
+          i(class="fas fa-cogs mr-2") Cài đặt chung

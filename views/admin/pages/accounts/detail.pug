@@ -1,0 +1,27 @@
+extends ../../layouts/default.pug
+
+block main
+  if (account.fullName)
+    h1(class="mb-4") Họ và tên: #{account.fullName}
+  
+  if (account.email)
+    h1(class="mb-4") Email: #{account.email}
+
+  if (account.phone)
+    h1(class="mb-4") SĐT: #{account.phone}
+  
+  if (account.status)
+    div(class="mb-4")
+      span Trạng thái: 
+      if (account.status === "active")
+        span(class="badge text-bg-success") Hoạt động
+      else
+        span(class="badge text-bg-danger") Dừng hoạt động
+
+  if (role.permissions.includes("accounts_edit"))
+    a(
+      href=`${prefixAdmin}/accounts/edit/${account.id}`
+      class="badge text-bg-warning"
+    ) Chỉnh sửa
+
+  script(src="/admin/js/product.js") 
