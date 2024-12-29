@@ -12,7 +12,7 @@ block main
     method="post"
     enctype="multipart/form-data"
   ) 
-    div(class="form-group")
+    div(class="form-group mt-3")
       label(for="fullName") Họ tên *
       input(
         type="text"
@@ -22,7 +22,7 @@ block main
         required
         value=user.fullName
       )
-    div(class="form-group")
+    div(class="form-group mt-3")
       label(for="email") Email *
       input(
         type="email"
@@ -32,7 +32,7 @@ block main
         required
         value=user.email
       )
-    div(class="form-group")
+    div(class="form-group mt-3")
       label(for="password") Mật khẩu *
       input(
         type="password"
@@ -40,7 +40,7 @@ block main
         id="password"
         name="password"
       )
-    div(class="form-group")
+    div(class="form-group mt-3")
       label(for="phone") SDT
       input(
         type="text"
@@ -49,7 +49,7 @@ block main
         name="phone"
         value=user.phone
       )
-    div(class="form-group")
+    div(class="form-group mt-3")
       label(for="avatar") Avatar
       input(
         type="file"
@@ -64,7 +64,7 @@ block main
         upload-image-preview
         class="image-preview"
       )
-    div(class="form-group")
+    div(class="form-group mt-3")
       button(
         type="submit"
         class="btn btn-primary"

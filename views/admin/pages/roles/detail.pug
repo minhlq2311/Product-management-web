@@ -1,0 +1,33 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+    +alert-error(5000)
+    +alert-success(5000)
+    h1(class="mb-4") Chi tiết nhóm quyền
+
+    div(class="mb-4")
+        label(for="title" class="form-label fw-bold") Tiêu đề:
+        input(
+          type="text"
+          class="form-control"
+          id="title"
+          value=role.title
+          readonly
+        )
+
+    div(class="mb-4")
+        label(for="desc" class="form-label fw-bold") Mô tả:
+        input(
+          type="text"
+          class="form-control"
+          id="desc"
+          value=role.description
+          readonly
+        )
+
+    div(class="form-group mb-3 mt-4")
+        a(
+          href=`${prefixAdmin}/roles/edit/${role.id}`
+          class="btn btn-warning"
+        ) Chỉnh sửa

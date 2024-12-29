@@ -10,7 +10,7 @@ block main
         h1(class="text-center") Đăng ký tài khoản
         form(action="/user/register", method="post") 
           div(class="form-group")
-            label(for="fullName") Họ tên
+            label(for="fullName") Họ và tên
             input(
               type="text"
               class="form-control"
@@ -36,8 +36,8 @@ block main
               name="password"
               required
             )
-          div(class="form-group")
+          div(class="form-group mt-3")
             button(
               type="submit"
-              class="btn btn-primary btn-block"
+              class="btn btn-primary btn-block w-100"
             ) Đăng ký

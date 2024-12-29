@@ -101,3 +101,24 @@ module.exports.deleteRole = async (req, res) => {
 
   res.redirect("back");
 }
+
+// [GET] /admin/roles/detail/:id
+module.exports.detail = async (req, res) => {
+  try {
+    const find = {
+      deleted: false,
+      _id: req.params.id
+    }
+    
+    const role = await Role.findOne(find);
+    // console.log(product)
+
+    res.render("admin/pages/roles/detail", {
+      titlePage: role.title,
+      role: role
+    });
+  } catch (error) {
+    req.flash("error", "No roles found");
+    res.redirect(`${systemConfig.prefixAdmin}/role`);
+  }
+}

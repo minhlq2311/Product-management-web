@@ -13,7 +13,7 @@ block main
         method="post"
         enctype='multipart/form-data'
       )
-        div(class="form-group")
+        div(class="form-group mt-3")
           label(for="fullName")  Họ tên *
           input(
             type="text"
@@ -23,7 +23,7 @@ block main
             required
             value=data.fullName
           )
-        div(class="form-group")
+        div(class="form-group mt-3")
           label(for="email") Email *
           input(
             type="email"
@@ -33,7 +33,7 @@ block main
             required
             value=data.email
           )
-        div(class="form-group")
+        div(class="form-group mt-3")
           label(for="password") Mật khẩu *
           input(
             type="password"
@@ -41,7 +41,7 @@ block main
             id="password"
             name="password"
           )
-        div(class="form-group")
+        div(class="form-group mt-3")
           label(for="phone") Số điện thoại
           input(
             type="text"
@@ -51,7 +51,7 @@ block main
             value=data.phone
           )
         div(
-          class="form-group"
+          class="form-group mt-3"
           upload-image
         )
           label(for="avatar") Avatar
@@ -68,7 +68,7 @@ block main
             class="image-preview"
             upload-image-preview
           )
-        div(class="form-group")
+        div(class="form-group mt-3")
           label(for="role_id") Phân quyền
           select(name="role_id" id="role_id" class="form-control") 
             option(disabled) -- Chọn --
@@ -77,7 +77,7 @@ block main
                 value=item.id
                 selected=(item.id == data.role_id ? true : false)
               ) #{item.title}
-        div(class="form-group form-check form-check-inline")
+        div(class="form-group mt-3 form-check form-check-inline")
           input(
             type="radio"
             class="form-check-input"
@@ -87,7 +87,7 @@ block main
             checked=(data.status == "active" ? true : false)
           )
           label(for="statusActive" class="form-check-label") Hoạt động
-        div(class="form-group form-check form-check-inline")
+        div(class="form-group mt-3 form-check form-check-inline")
           input(
             type="radio"
             class="form-check-input"
@@ -97,7 +97,7 @@ block main
             checked=(data.status == "inactive" ? true : false)
           )
           label(for="statusInActive" class="form-check-label") Dừng hoạt động
-        div(class="form-group")
+        div(class="form-group mt-3")
           button(
             type="submit"
             class="btn btn-primary"

@@ -50,14 +50,17 @@ module.exports.loginPost = async (req, res) => {
   if(!user) {
     req.flash('error', 'Email không tồn tại!')
     res.redirect('back');
+    return;
   } 
   if(md5(password) !== user.password) {
     req.flash('error', 'Sai mật khẩu!')
     res.redirect('back');
+    return;
   }
   if(user.status === 'inactive') {
     req.flash('error', 'Tài khoản đang bị khóa!')
     res.redirect('back');
+    return;
   }
 
   const cart = await Cart.findOne({
@@ -86,7 +89,7 @@ module.exports.logout = async (req, res) => {
 
 // [GET] /user/password/forgot
 module.exports.forgotPassword = async (req, res) => {
-  res.render("client/pages/user/forgotPassword", {
+  res.render("client/pages/user/forgot-password", {
     pageTitle: "Lấy lại mật khẩu"
   })
 }
@@ -144,6 +147,7 @@ module.exports.otpPasswordPost = async (req, res) => {
     res.redirect('back');
     return;
   }
+  // Xác định đúng là user cần đổi mật khẩu, gửi token cho user để chỉ reset được mk của user đó
   const user = await User.findOne({
     email: email
   });
@@ -174,6 +178,6 @@ module.exports.resetPasswordPost = async (req, res) => {
 //[GET] /user/info
 module.exports.info = async (req, res) => {
   res.render("client/pages/user/info", {
-    pageTitle: "Thông tin tài khoản"
+    pageTitle: "Thông tin tài khoản",
   })
 }

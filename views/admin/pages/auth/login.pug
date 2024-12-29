@@ -7,10 +7,10 @@ block main
   .container.my-5
     .row.justify-content-center
       .col-8
-        h1(class="text-center") Đăng nhập
+        h1(class="text-center mb-4") Đăng nhập
         form(action=`${prefixAdmin}/auth/login`, method="post") 
-          div(class="form-group")
-            label(for="email") Email
+          div(class="form-group mb-4")
+            label(for="email" class="form-label fs-5 fw-bold mb-2") Email
             input(
               type="email"
               class="form-control"
@@ -18,8 +18,8 @@ block main
               name="email"
               required
             )
-          div(class="form-group")
-            label(for="password") Mật khẩu
+          div(class="form-group mb-4")
+            label(for="password" class="form-label fs-5 fw-bold mb-2") Mật khẩu
             input(
               type="password"
               class="form-control"
@@ -27,9 +27,9 @@ block main
               name="password"
               required
             )
-          div(class="form-group")
+          div(class="form-group mt-4")
             button(
               type="submit"
-              class="btn btn-primary btn-block"
+              class="btn btn-primary btn-block w-100"
             ) Đăng nhập
-  script(src="/admin/js/script.js") 
+  script(src="/admin/js/script.js")

@@ -5,31 +5,31 @@ block main
   if(role.permissions.includes("roles_edit"))
     +alert-error(5000)
     +alert-success(5000)
-    h1(class="mb-4") Chỉnh sửa nhóm quyền
+    h1(class="mb-4") Chỉnh sửa nhóm quyền <!-- Căn chỉnh tiêu đề -->
 
     form(
       action=`${prefixAdmin}/roles/edit/${data.id}?_method=PATCH`, 
       method="post"
+      class="p-4 border rounded shadow bg-light" 
     ) 
-      div(class=form-group)
-        label(for="title") Tiêu đề
+      div(class="form-group mb-4")
+        label(for="title" class="form-label fw-bold") Tiêu đề <!-- Nhãn tiêu đề -->
         input(
           type="text"
           class="form-control"
           id="title"
           name="title"
           value=data.title
-          )
-      div(class=form-group)
-        label(for="desc") Mô tả
+        )
+      div(class="form-group mb-4")
+        label(for="desc" class="form-label fw-bold") Mô tả <!-- Nhãn mô tả -->
         input(
           class="form-control"
           id="desc"
           name="description"
           value=data.description
-          )
-      
-      div(class="form-group")
+        )
+      div(class="form-group mt-4")
         button(
           type="submit"
           class="btn btn-primary"

@@ -1,10 +1,46 @@
 extends ../../layouts/default.pug
-include ../../mixins/box-head.pug
+include ../../mixins/alert.pug
 
-block main 
-  .container.my-3
-    .row
-      .col-12
-        +box-head("Thông tin tài khoản")
+block main
+    +alert-error(5000)
+    +alert-success(5000)
+    h1(class="mb-4 text-center") Chi tiết tài khoản
 
-    div #{user}
+    .container.my-5
+      .row.justify-content-center
+        .col-8
+          .card.shadow-sm
+            .card-body
+              div(class="mb-4")
+                label(for="title" class="form-label fw-bold mb-2 d-block") Họ và tên:
+                input(
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  value=user.fullName
+                  readonly
+                )
+
+              div(class="mb-4")
+                label(for="desc" class="form-label fw-bold mb-2 d-block") Email:
+                input(
+                  type="text"
+                  class="form-control"
+                  id="desc"
+                  value=user.email
+                  readonly
+                )
+
+              if (user.status)
+                div(class="mb-4")
+                  span(class="form-label fw-bold mb-2 d-block") Trạng thái: 
+                  if (user.status === "active")
+                    span(class="badge text-bg-success px-3 py-2 fs-6") Hoạt động
+                  else
+                    span(class="badge text-bg-danger px-3 py-2 fs-6") Dừng hoạt động
+
+          .text-start.mt-4
+            a(
+              href="/"
+              class="btn btn-secondary"
+            ) Quay lại

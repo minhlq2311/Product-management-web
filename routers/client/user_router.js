@@ -26,16 +26,18 @@ router.get('/logout', controller.logout);
 
 router.get(
   '/password/forgot',
-  authMiddleware.requireAuth,
+  // authMiddleware.requireAuth,
   controller.forgotPassword
 );
 
 router.post(
   '/password/forgot', 
-  validate.forgotPasswordPost,
+  // validate.forgotPasswordPost,
   controller.forgotPasswordPost
 );
 
+
+// Start OTP from here
 router.get('/password/otp', controller.otpPassword);
 
 router.post('/password/otp', controller.otpPasswordPost);
@@ -44,7 +46,7 @@ router.get('/password/reset', controller.resetPassword);
 
 router.post(
   '/password/reset', 
-  validate.resetPasswordPost,
+  // validate.resetPasswordPost,
   controller.resetPasswordPost
 );
 

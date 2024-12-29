@@ -1,27 +1,61 @@
 extends ../../layouts/default.pug
+include ../../mixins/alert.pug
 
 block main
-  if (account.fullName)
-    h1(class="mb-4") Họ và tên: #{account.fullName}
-  
-  if (account.email)
-    h1(class="mb-4") Email: #{account.email}
+    +alert-error(5000)
+    +alert-success(5000)
+    h1(class="mb-4") Chi tiết tài khoản
 
-  if (account.phone)
-    h1(class="mb-4") SĐT: #{account.phone}
-  
-  if (account.status)
     div(class="mb-4")
-      span Trạng thái: 
-      if (account.status === "active")
-        span(class="badge text-bg-success") Hoạt động
-      else
-        span(class="badge text-bg-danger") Dừng hoạt động
+        label(for="title" class="form-label fw-bold") Họ và tên:
+        input(
+          type="text"
+          class="form-control"
+          id="title"
+          value=account.fullName
+          readonly
+        )
 
-  if (role.permissions.includes("accounts_edit"))
-    a(
-      href=`${prefixAdmin}/accounts/edit/${account.id}`
-      class="badge text-bg-warning"
-    ) Chỉnh sửa
+    div(class="mb-4")
+        label(for="desc" class="form-label fw-bold") Email:
+        input(
+          type="text"
+          class="form-control"
+          id="desc"
+          value=account.email
+          readonly
+        )
 
-  script(src="/admin/js/product.js") 
+    div(class="mb-4")
+        label(for="desc" class="form-label fw-bold") SĐT:
+        input(
+          type="text"
+          class="form-control"
+          id="desc"
+          value=account.phone
+          readonly
+        )
+
+    div(class="mb-4")
+        label(for="desc" class="form-label fw-bold") Trạng thái:
+        input(
+          type="text"
+          class="form-control"
+          id="desc"
+          value=account.phone
+          readonly
+        )
+    if (account.status)
+      div(class="mb-4")
+        span Trạng thái: 
+        if (account.status === "active")
+          span(class="badge text-bg-success px-3 py-2 fs-6") Hoạt động
+        else
+          span(class="badge text-bg-danger px-3 py-2 fs-6") Dừng hoạt động
+        
+
+    div(class="form-group mb-5 mt-4")
+        a(
+          href=`${prefixAdmin}/accounts/edit/${account.id}`
+          class="btn btn-warning"
+        ) Chỉnh sửa

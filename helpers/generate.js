@@ -1,3 +1,4 @@
+// Genarates random string for token used in account model
 module.exports.generateRandomString = (length) => {
   const character = "ABCDEFGHIKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let result = "";
@@ -7,6 +8,7 @@ module.exports.generateRandomString = (length) => {
   return result;
 }
 
+// Genarates random number for OTP
 module.exports.generateRandomNumber = (length) => {
   const character = "0123456789";
   let result = "";

@@ -60,7 +60,7 @@ module.exports.category = async (req, res) => {
   });
 
   // Hàm lấy ra các danh mục con
-  const listSubCategory = await productCategoryHelper.getSubCategory(category.id); // Phải dùng await
+  const listSubCategory = await productCategoryHelper.getSubCategory(category.id); 
   const listSubCategoryId = listSubCategory.map(item => item.id);
   
   const products = await Product.find({

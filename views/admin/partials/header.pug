@@ -3,14 +3,14 @@ header.header
     .row.align-items-center
       .col-3
         .inner-logo
-          a(href="/admin/dashboard")
-            span.logo-text ADMIN
-      .col-9.text-right
-        .btn-group
-          button.btn.btn-primary.btn-sm.dropdown-toggle(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false")
-            i(class="fas fa-user-circle") #{user.fullName}
-          .dropdown-menu.dropdown-menu-right
-            a.dropdown-item(href=`${prefixAdmin}/my-account`)
-              i(class="fas fa-user") Thông tin tài khoản
-            a.dropdown-item(href=`${prefixAdmin}/auth/logout`)
-              i(class="fas fa-sign-out-alt") Đăng xuất
+          a(href="/admin/dashboard") ADMIN
+      .col-9.d-flex.justify-content-end
+        div(class = "text-right")
+          a(href="/admin/my-account"
+            class="btn btn-primary btn-sm me-2"
+          ) #{user.fullName}
+
+        div(class = "text-right")
+          a(href="/admin/auth/logout"
+            class="btn btn-danger btn-sm"
+          ) Đăng xuất

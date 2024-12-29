@@ -8,7 +8,7 @@ block main
       h1 #{titlePage}
 
       .card.mb-3
-        .card-header Danh sách sản phẩm
+        .card-header Danh mục sản phẩm
           .card-body
             .row
               .col-8
@@ -17,7 +17,7 @@ block main
                 a(
                   href=`${prefixAdmin}/products-category/create`
                   class="btn btn-outline-success"
-                ) Add new item
+                ) Thêm danh mục
           .card-body
             table(
               class="table table-hover table-sm"
@@ -28,7 +28,7 @@ block main
                   th
                     input(type="checkbox" name="checkall")
                   th STT
-                  th Hình ảnh
+                  //- th Hình ảnh
                   th Tiêu đề
                   th Vị trí
                   th Trạng thái

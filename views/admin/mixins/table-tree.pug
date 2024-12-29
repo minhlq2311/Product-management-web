@@ -1,5 +1,6 @@
 mixin table-tree(items, level = 1)
   each item, index in items
+    - const prefix = Array(level + 1).join('-- ')
     tr
       td
         input(
@@ -8,9 +9,9 @@ mixin table-tree(items, level = 1)
           value=item.id
           )
       td #{item.index}
-      td
-        img(src=item.thumbnail, alt=item.title, width="100px", height="auto")
-      td #{item.title}
+      //- td
+      //-   img(src=item.thumbnail, alt=item.title, width="100px", height="auto")
+      td #{prefix}#{item.title}
       td
         input(
           type="number"

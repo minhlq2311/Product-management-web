@@ -44,17 +44,15 @@ if(dataRecords) {
   const records = JSON.parse(dataRecords.getAttribute("data-records"));
   const tablePermissions = document.querySelector("[table-permissions]");
 
-  /* Trong trường hợp này dù trên console biến records được
-  xác định là một object nhưng vì khi chuyển chuỗi JSON sang một object ở 
-  câu lệnh trên, và chuỗi JSON ban đầu đại diện cho một mảng, nên 
-  records vẫn được coi là một mảng và có thể sử dụng forEach */
-  /* Để kiểm tra xem một biến có phải là array hay không thì
-  sử dụng câu lệnh Array.isArray(records) */
-
+  // Lặp qua từng record dạng id, permissions[]
   records.forEach((records, index) => {
+    // Lấy permissions[]
     const permissions = records.permissions;
+    // Lặp qua từng gtri trong permissions[]
     permissions.forEach(permission => {
+      // Tìm row có data-name = permission
       const row = tablePermissions.querySelector(`[data-name=${permission}]`);
+      // Tìm input có value = id trong row đó
       const input = row.querySelectorAll('input')[index];
       input.checked = true;
     })

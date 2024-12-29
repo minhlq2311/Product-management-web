@@ -21,7 +21,7 @@ block main
           name="fullName"
           required
         )
-      div(class="form-group")
+      div(class="form-group mt-3")
         label(for="email") Email *
         input(
           type="email"
@@ -30,7 +30,7 @@ block main
           name="email"
           required
         )
-      div(class="form-group")
+      div(class="form-group mt-3")
         label(for="password") Mật khẩu *
         input(
           type="password"
@@ -39,7 +39,7 @@ block main
           name="password"
           required
         )
-      div(class="form-group")
+      div(class="form-group mt-3")
         label(for="phone") Số điện thoại
         input(
           type="text"
@@ -48,7 +48,7 @@ block main
           name="phone"
         )
       div(
-        class="form-group"
+        class="form-group mt-3"
         upload-image
       )
         label(for="avatar") Avatar
@@ -65,13 +65,13 @@ block main
           class="image-preview"
           upload-image-preview
         )
-      div(class="form-group")
+      div(class="form-group mt-3")
         label(for="role_id") Phân quyền
         select(name="role_id" id="role_id" class="form-control") 
           option(disabled) -- Chọn --
           each item in roles
             option(value=item.id) #{item.title}
-      div(class="form-group form-check form-check-inline")
+      div(class="form-group form-check form-check-inline mt-3")
         input(
           type="radio"
           class="form-check-input"
@@ -90,7 +90,7 @@ block main
           value="inactive"
         )
         label(for="statusInActive" class="form-check-label") Dừng hoạt động
-      div(class="form-group")
+      div(class="form-group mt-3")
         button(
           type="submit"
           class="btn btn-primary"

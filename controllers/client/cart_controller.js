@@ -31,7 +31,7 @@ module.exports.index = async (req, res) => {
   })
 }
 
-// [POST] /cart/:productId
+// [POST] /cart/add/:productId
 module.exports.add = async (req, res) => {
   const productId = req.params.productId;
   const quantity = parseInt(req.body.quantity);
@@ -85,13 +85,7 @@ module.exports.delete = async (req, res) => {
     $pull: { products: { product_id: productId } }
   })
 
-  // Cách 2: update cart sử dụng findById
-  // const cart = await Cart.findById(cartId);
-  // const indexProduct = cart.products.findIndex(dataIndex => dataIndex.product_id === productId);
-  // cart.products.splice(indexProduct, 1);
-  // await cart.save()
-
-  req.flash("success", "Đã xóa sản phẩm thành công");
+  req.flash('success', 'Đã xóa sản phẩm thành công');
   res.redirect('back');
 }
 
@@ -110,6 +104,6 @@ module.exports.update = async (req, res) => {
     }
   });
 
-  req.flash("success", "Cập nhật số lượng thành công");
+  req.flash('success', 'Cập nhật số lượng thành công');
   res.redirect('back');
 }

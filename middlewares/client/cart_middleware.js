@@ -4,7 +4,6 @@ module.exports.cartId = async (req, res, next) => {
   if(!req.cookies.cartId) {
     // Tạo giỏ hàng
     const cart = new Cart();
-    console.log("Cart data:", cart);
 
     await cart.save();
     const expiresCookie = 365 * 24 * 60 * 60 * 1000;
@@ -17,7 +16,6 @@ module.exports.cartId = async (req, res, next) => {
     const cart = await Cart.findOne({
       _id: req.cookies.cartId
     });
-    console.log("Cart data:", cart);
 
     cart.totalQuantity = cart.products.reduce((sum, item) => sum + item.quantity, 0);
     // console.log(cart);
