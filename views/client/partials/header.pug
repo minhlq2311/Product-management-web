@@ -1,14 +1,14 @@
 include ../mixins/sub-menu.pug
 
 header.header
-  .container 
-    .row.align-items-center
-      .col-3
+  .container-fluid
+    .row.align-items-center.d-flex.justify-content-between
+      .col-auto
         .inner-logo
           a(href="/")
-            img(src=settingGeneral.logo, alt=settingGeneral.websiteName)
+            img(src=settingGeneral.logo, alt=settingGeneral.websiteName, style="max-height: 80px;")
       
-      .col-5
+      .col.flex-grow-1
         form(action="/search", method="get")
           div(class="form-group d-flex mb-0")
             input(
@@ -23,26 +23,24 @@ header.header
               class="btn btn-primary"
             ) Tìm 
 
-      .col-4
+      .col-auto
         .inner-menu
-          ul
-            li 
+          ul.list-inline.mb-0.text-end
+            li.list-inline-item 
               a(href="/") Trang chủ
-            li(class="sub-menu")
+            li.list-inline-item.sub-menu
               - const pathProduct = "/products"
               a(href=pathProduct) Sản phẩm
                 +sub-menu(layoutsProductsCategory, pathProduct)
-            li
+            li.list-inline-item
               a(href="/cart") Giỏ hàng (#{miniCart ? miniCart.totalQuantity : 0})
             if (user)
-              li
-                a(href="/chat") Chat
-              li
+              li.list-inline-item
                 a(href="/user/info") #{user.fullName}
-              li
+              li.list-inline-item
                 a(href="/user/logout") Đăng xuất
             else
-              li
+              li.list-inline-item
                 a(href="/user/register") Đăng ký
-              li
-                a(href="/user/login") Đăng nhập  
+              li.list-inline-item
+                a(href="/user/login") Đăng nhập

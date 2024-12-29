@@ -1,8 +1,11 @@
 extends ../../layouts/default.pug
 
 block main
+  h1(class="mb-4") Chi tiết danh mục
   if (category.title)
-    h1(class="mb-4") #{category.title}
+    div(class="mb-4") 
+      span(class="fw-bold fs-5 me-3") Tên danh mục:
+      span(class="fs-5 text-dark") !{category.title}
 
   if (category.thumbnail)
     div(class="mb-4")
@@ -12,19 +15,19 @@ block main
       )
   
   if (category.status)
-    div(class="mb-4")
-      span Trạng thái: 
+    div(class="mb-4 d-flex align-items-center")
+      span(class="fw-bold fs-5 me-3") Trạng thái:
       if (category.status === "active")
-        span(class="badge text-bg-success") Hoạt động
+        span(class="badge text-bg-success px-3 py-2 fs-6") Hoạt động
       else
-        span(class="badge text-bg-danger") Dừng hoạt động
+        span(class="badge text-bg-danger px-3 py-2 fs-6") Dừng hoạt động
 
   if (category.description)
     div(class="mb-4") !{category.description}
 
   a(
     href=`${prefixAdmin}/products-category/edit/${category.id}`
-    class="badge text-bg-warning"
+    class="btn btn-warning px-4 py-2 mt-4 fs-6"
   ) Chỉnh sửa
 
-  script(src="/admin/js/product.js") 
+  script(src="/admin/js/product.js")

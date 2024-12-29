@@ -39,23 +39,6 @@ block main
           name="description"
           rows="5"
           ) #{data.description}
-      div(
-        class=form-group
-        upload-image
-        )
-        label(for="thumbnail") Ảnh
-        input(
-          type="file"
-          class="form-control-file"
-          id="thumbnail"
-          name="thumbnail"
-          accept="image/*" /* Chỉ upload được file ảnh. Đây là thuộc tính bên frontend */
-          upload-image-input
-          )
-        img(
-          src=data.thumbnail
-          upload-image-preview
-        )
       div(class=form-group)
         label(for="position") Vị trí
         input(
