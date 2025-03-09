@@ -8,7 +8,7 @@ module.exports.index = async (req, res) => {
     featured: "1",
     deleted: false,
     status: "active"
-  }).limit(2);
+  }).limit(3);
   const newProductsFeatured = productsHelper.priceNewProducts(productsFeatured);
   // Hết Lấy ra sản phẩm nổi bật
 
