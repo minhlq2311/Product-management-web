@@ -70,7 +70,7 @@ module.exports.add = async (req, res) => {
     )
   }
   req.flash('success', 'Đã thêm sản phẩm vào giỏ hàng')
-  res.redirect('back');
+  res.redirect(req.get('Referrer') || '/');
 }
 
 // [GET] cart/delete/:productId
@@ -86,7 +86,7 @@ module.exports.delete = async (req, res) => {
   })
 
   req.flash('success', 'Đã xóa sản phẩm thành công');
-  res.redirect('back');
+  res.redirect(req.get('Referrer') || '/');
 }
 
 // [GET] cart/update/:productId/:quantity
@@ -105,5 +105,5 @@ module.exports.update = async (req, res) => {
   });
 
   req.flash('success', 'Cập nhật số lượng thành công');
-  res.redirect('back');
+  res.redirect(req.get('Referrer') || '/');
 }

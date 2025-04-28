@@ -1,4 +1,4 @@
-const express = require('express') // Yêu cầu thư viện express bằng việc sử dụng câu lệnh require và gán cho biến express
+const express = require('express'); 
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -9,32 +9,37 @@ const flash = require('express-flash');
 const path = require('path');
 const multer = require('multer');
 const moment = require('moment');
-const app = express() //Toàn bộ chương trình
+const app = express(); 
 const http = require('http');
 const server = http.createServer(app);
 
 const systemConfig = require("./config/system.js");
 require("dotenv").config();
-const port = process.env.PORT || 3000;//Số cổng localhost
+const port = process.env.PORT || 3000;
 const database = require("./config/database");
 
 database.connect();
 app.use(methodOverride('_method'));
 
-// Socket.id
+// Socket.io
 const { Server } = require('socket.io');
 const io = new Server(server);
 global._io = io;
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false })); //đọc trên npm để hiểu rõ extended là gì
+app.use(bodyParser.urlencoded({ extended: false }));
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'pug');
-app.use(express.static(`${__dirname}/public`)); //Do đẩy lên server, server ko hiểu public là gì
+app.use(express.static(`${__dirname}/public`));
 
 // Flash
 app.use(cookieParser("123"));
-app.use(session({ cookie: {maxAge: 60000} }));
+app.use(session({
+    secret: 'sherlock@2311',        // <-- THÊM secret
+    resave: false,                    // <-- THÊM resave
+    saveUninitialized: true,          // <-- THÊM saveUninitialized
+    cookie: { maxAge: 60000 }
+}));
 app.use(flash());
 // End flash
 
@@ -46,24 +51,19 @@ app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
 app.locals.moment = moment;
 
-// app.get('/', (req, res) => {
-//     res.render("client/pages/home/index"); //Ở sẵn trong mục views rồi nên không cần thêm nữa
-// });
-
-// app.get('/products', (req, res) => {
-//     res.render("client/pages/products/index"); //Ở sẵn trong mục views rồi nên không cần thêm nữa
-// });
-
+// Routers
 routerAdmin(app);
 router(app);
+
+// 404 Page
 app.get("*", (req, res) => {
-  res.render("client/pages/errors/404", {
-    pageTitle: "404 Not Found"
-  })
-})
+    res.render("client/pages/errors/404", {
+        pageTitle: "404 Not Found"
+    });
+});
 
 server.listen(port, () => {
-    console.log(`App listening on port ${port}`);
+    console.log(`App running on http://localhost:${port}`);
 });
 
 // Nếu file package.json bị sửa thì phải chạy lại server, dù có nodemon hay ko
